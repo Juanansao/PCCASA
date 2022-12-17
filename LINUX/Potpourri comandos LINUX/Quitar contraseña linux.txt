@@ -1,0 +1,17 @@
+https://blog.desdelinux.net/reset-password-root-grub/
+Al abrir grub presionamos "e" y nos aparece el script de inicio que tambien s epodia modificar desde grub
+añadimos init=/bin/bash y nos saldra un interprete al inicio
+f10
+linux /vmlinuz-3.2.0-4-amd64 root=/dev/mapper/seacat-root ro quiet init=/bin/bash
+en /etc/shadow quitamos * a root(hash*)
+
+AHORA NO NOS PIDE CONTRASEÑA DE ROOT
+
+---------------
+https://guialinux.net/como-eliminar-el-uso-de-contrasenas/
+desde la terminal
+	passwd -d usuario
+------
+OTRA FORMA ES EN EL FICHERO etc/shadow eliminar el codigi entre ::
+	juanansao:$hskncasfufs5468sd7v5sf:19456:0:9999:7:::
+	juanansao::19456:0:9999:7:::

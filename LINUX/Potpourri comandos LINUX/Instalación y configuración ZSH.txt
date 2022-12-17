@@ -1,0 +1,50 @@
+YO YA HE INSTALADO TEMAS PARA BASH LOS CUALES PODRIA QUITAR YA QUE VOY A USAR ZSH COMO INTERPRETE
+CON EL COMANDO SIGUIENTE SABEMOS QUE INTERPRETE ESTAMOS USANDO...
+#echo $SHELL
+
+PAQUETES A INSTALAR:
+zsh
+zsh-completions
+zsh-autosuggestions (NO LO INSTALA JUANCRI)
+
+CON EL SIGUIENTE COMANDO CAMBIAMOS EL INTERPRETE
+#chsh -s /bin/zsh
+
+AHORA INSTALAMOS TEMAS CLONADOS DESDE GITHUB DESDE https://ohmyz.sh
+CON GIT Y CURL INSTALADO METEMOS ESTE COMANDO PARA CLONAR
+#sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+UNA VEZ INSTALADO SIGUE PASANDO LO MISMO QUE CON BASH... SE VE RARO
+PASAMOS A INSTALAR EL TEMA POWERLEVEL10K
+#paru -S zsh-theme-powerlvel10k-git
+#:q
+AÑADIMOS LINEAS AL ARCHIVO .zshrc CON 
+#echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+
+INSTALAMOS FUENTES SUGERIDAS | SIN INSTALAR HE CONFIGURADO Y SE VE RARO TMABIEN... VAMOS A PROBAR
+[sudo pacman -S powerline-common awesome-terminal-fonts]
+#paru -S powerline-common awesome-terminal-fonts
+[yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k]
+#paru -S ttf-meslo-nerd-font-powerlevel10k
+
+AHORA CONFIGURAMOS 
+#p10k configure
+
+AL CONFIGURAR HA PASADO LO MISMO QUE CON POWERLEVEL.. NO COGE BIEN EL DIAMANTE...
+SEGUIMOS AUN ASI...
+PARA LAS SUGERENCIAS CLONAMOS 
+#git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+#git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+PARA CLONAR ESTO HE CREADO LAS CARPETAS PER AL TENER ORDENES DENTRO YA DE DONDE TIENE QUE CLONARSE EL CONTENIDO NO SE DESCARGA EN LA CARPTA DIRECTORIO DESDE LA QUE INDICAS LA ORDEN
+
+POR ULTIMO PARA HACER EFECTO ESTAS DOS ULTIMAS COSAS DE LAS SUGGESTIONS ETC TENEMOS QUE AÑADIR ESTO AL ARCHIVO .zshrc
+Y le añadimos en plugins:
+
+plugins=(git
+zsh-autosuggestions
+zsh-syntax-highlighting
+)
+Ya solo nos queda recargar el fichero o cerrar la sesión.
+
+source ~/.zshrc

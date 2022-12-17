@@ -1,0 +1,8 @@
+cd directorio_donde_se_encuentra_el_tarball
+tar –zxvf nombre_paquete.tar.gz (o nombre_paquete.tgz, en caso de ser un .tgz)
+cd nombre_paquete_desempaquetado
+./configure
+make
+make install
+----------------------------
+https://wiki.archlinux.org/title/Offline_installation_of_packages_(Espa%C3%B1ol)#A_slightly_contrived_example

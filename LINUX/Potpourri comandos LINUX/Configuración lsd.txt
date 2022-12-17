@@ -1,0 +1,7 @@
+COLORES CODIGOS https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+todo se configura en .config/lsd...
+Para quitar el recorte de los iconos probamos a copiar y pegar el espacio raro que da en el ejemplo README PERO TAMPOCO FUNCIONA... LO METE COMO ANTES, ENTRE EL ICONO Y EL NOMBRE A LA DERECHA
+_____________
+HE AÑADIDO ESPACIOS EN usr/share/fonts/awesome-terminal-fonts A LOS ARCHIVOS .sh PERO NO LOS COGE LSD NI NADA PARECE.. ESTAN LOS BACKUPS PERO NO HE VUELTO A DEJARLO COMO ESTABA PORQUE PARECE QUE NO HACE EFECTO
+TAMBIEN HE AÑAIDOD ESPACIOS EN EL TEMA POWERLEVEL10K ICONS ICONS.ZSH PERO TAMPOCO FUNCIONA
+

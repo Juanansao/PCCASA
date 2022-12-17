@@ -1,0 +1,33 @@
+REPOSITORIO GIT OH-MY-BASH
+GIT Y CURL NECESARIOS
+Una vez tenemos instalado GIT y CURL, vamos a instalar el repositorio, para ello copiamos la siguiente orden desde la web https://ohmybash.nntoan.com/ y la ejecutamos.
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+
+UNA VEZ HECHO ESTO YA ESTARA INSTALADA LA CONSOLA EN EL USUARIO QUE ES DESDE DONDE HEMOS INSTALADO... LA CONFIGURACION ANTERIOR SE HA GUARDADO EN UN BACKUP POR SI QUEREMOS RECUPERARLA, JUSTO DONDE TENIAMOS EL BACKUPO GUARDADO ANTERIOR.
+PARA CARGAR TEMAS NUEVOS En la web https://github.com/ohmybash/oh-my-bash/wiki/Themes podéis ver la apariencia que tienen y así elegir el que más os guste.
+https://github.com/ohmybash/oh-my-bash/tree/master/themes
+
+EN EL ARCHIVO .bashrc CAMBIAR OSH_THEME POR UNO DE LOS DISPONIBLES Y RECARGAR CONSOLA CON
+#source .bashrc
+
+EN LA MAYORIA TENDREMOS QUE CLONAR FUENTES ADICIONALES PARA QUE SE VEA BIEN... ESTO ESTA EN LOS ACHIVOS DE README EXPLICADO EN CADA TEMA...
+RECOMIENDAN ESTE
+
+#git clone https://github.com/powerline/fonts.git fonts
+#cd fonts
+
+#./install.sh (#install.sh) DE LA SEGUNDA MANERA NO VA... DEBE DE SER QUE HA CAMBIADO ALGO EN LA CONSOLA
+
+AL PONER EL COMANDO INSTALL.SH NO FUNCIONA NI COMO SUDO... SOLO FUNCIONA #
+./install.sh
+
+UNA VEZ HECHO ESTO SIGUE MOSTARNDOSE UN PICO QUE NOD EBERIA VERSE... PROBAMOS OTRAS OPCIONES
+https://powerline.readthedocs.io/en/latest/installation/linux.html#fonts-installation
+HE HECHO LO QUE PONE EN EL LINK DE ARRIBA PERO NO PARECE QUE HAGA NADA EN EL ASPECTO 
+#wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+#wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+#mv PowerlineSymbols.otf ~/.local/share/fonts/
+#fc-cache -vf ~/.local/share/fonts/
+#mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+

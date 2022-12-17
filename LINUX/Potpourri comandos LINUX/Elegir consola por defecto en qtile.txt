@@ -1,0 +1,7 @@
+AUQNUE A MI SE ME ABRE POR DEFECTO QTILE LO QUE HAY QUE HACER ES EDITAR EL ARCHIVO DESDE USUARIO
+.config/qtile/config.py Y CAMBIAR
+key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal")
+POR
+
+key([mod], "Return", lazy.spawn("alacritty"), desc="Launch terminal")
+COMO DIGO A MI NO ME HA HECHO FALTA HACER ESO, SE ME ABRE POR DEFECTO, CREO QUE ES PORQUE EN NINGUN MOMENTO INSTALE XTERM Y ES LA UNICA QUE HAY

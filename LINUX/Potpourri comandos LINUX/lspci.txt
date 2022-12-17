@@ -1,0 +1,1 @@
+lspci  -nnk | grep -iA2 3D

@@ -1,0 +1,29 @@
+
+
+SYSTEMCTL ENABLE NETWORKMANAGER.SERVICE
+SYSTEMCTL START NETWORKMANAGER.SERVICE
+_____
+ESAS DOS LINEAS DE SYSTEMCTL NO PARECE QUE HAGAN FALTA, LO HACE AUTOMÁTICO AL HACER NMCLI
+	nmcli dev wifi connect VoDaFoNeWiFi-5G password ********
+	DEV WLP3S0 ACTIVASDO CON EXITO(set wlp3s0 up?)	
+
+pacman -S xorg-server xorg-xinit 
+
+CREAMOS USUARIO PARA INSTALAR PAQEUTES SIN RIESGO
+useradd -m juanansao
+passwd
+(borramos passwd con passwd -d juanansao)
+
+A partir de ahora empezamos a instalar desde usuario...
+NO NOS DEJA INSTALAR UNLESS WE ARE ROOT
+INSTALAMOS SUDO DESDE ROOT PARA PODER INSTALAR DESDE USUARIO AUNQUE NO SE SI CAMBIA MUCHO LAS CARPETAS DE DESTINO DE INSTALACION
+	pacman -S sudo
+
+AHORA VAMOS AL ARCHIVO sudoers /etc/sudoers
+
+
+
+	
+
+
+
