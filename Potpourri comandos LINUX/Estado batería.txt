@@ -1,0 +1,4 @@
+cat /sys/class/power_supply/BAT0/capacity
+
+------------------------------------------
+https://www.linuxjournal.com/content/how-check-battery-status-using-linux-command-line

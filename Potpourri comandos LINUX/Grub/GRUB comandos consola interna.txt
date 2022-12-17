@@ -1,0 +1,5 @@
+https://www.gnu.org/software/grub/manual/grub/grub.html#Features
+
+keystatus --shift --ctrl --alt
+lsfonts
+time

@@ -1,0 +1,5 @@
+INCOMPLETO
+systemctl
+enable refelctor.service
+start reflector.service
+addtimer || list-timers

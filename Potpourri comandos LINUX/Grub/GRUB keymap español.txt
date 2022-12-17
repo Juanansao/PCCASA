@@ -1,0 +1,40 @@
+usr share kbd keymaps i386 qwerty es.map.gz
+
+////CREAR FORMATO MAPA TECLADO EN .GKB PARA GRUB
+hay dos formas:
+	ckbcomp es | grub-mklayout > es.gkb
+	grub-kbdcomp -o /path/es.gkb es
+NO FUNCIONAN!! No encuentran distribucion de teclado valida
+----------------------
+CKBCOMP ESTA PERDIDO POR LO QUE HAY QUE INSTALARLO DESDE EL REPOSITORIO NO OFICIAL AUR CLONANDO EL REPOSITORIO E INSTALANDOLO EN USUARIO, 
+YO CLONO E INSTALO EN USUARIO PARA QUE NO QUEDE EN ROOT YA QUE MAKEPKG SOLO DEJA HACERLO EN USUARIO
+UNA VEZ INSTALADO NOS SALE ERROR DE DIRECTORIOS, PARECE QUE ESTAN PUESTOS PARA DEBINA
+Añado este, EL RESTO SON ERRONEOS:
+home/juanansao/ckbcomp/src/console-setup-1.207/Keyboard/ckb 
+etc consoñesetup ckb ERROR
+usr local share x11 xkb ERROR
+etc x11 xkb ERROR
+PARECE QUE SOLO CON HACER EL CAMBIO EN USR BIN SOBRA YA QUE PONGO WHICH CKBCOMP Y ME APARECE ESA RUTA SOLO
+SUPONGO QUE DEPENDE DE SI ESTAS LLAMANDO A CKBCOMP DESDE USUSARIO O ROOT
+UNA VEZ HECHO ESTO SIGUEN APARECIENDO ERRORES EN TECLAS QUE NO ENCUENTRA PARECE
+AUN ASI SEGUIMOS...
+cambiar en /usr/grub.d/40_custom:
+insmod keylayouts
+keymap /ruta/es.gkb
+editar en grub.cfg cambiando /etc/default/grub con:
+GRUB_TERMINAL_INPUT="at keyboard"
+grub-mkconfig -o /ruta/grub.cfg
+
+
+TODO ESTO LO HACEMOS Y AUN ASI NO FUNCIONA, AUNQUE CARGUES EL TECLKADO CON KEYMAPS DESDE LA CONSOLA DE GRUB NO CARGA EL ES.GKB BIEN O EL ES.GKB ESTA MAL HEHCO
+PROBAMOS A CAMBIAR ES POR SU RUTA ENTERA EN CKBCOMP ES | GURB-MKLAYOUT ......
+/usr/share/kbd/keymaps/i386/qwerty/es.map.gz
+ckbcomp ruta/es.map.gz | grub-mklayout > /rutasalida/es.gkb
+AUN ASI NO FUNCIONA
+
+EL ERROR ESTABA EN:
+GRUB_TERMINAL_INPUT="at keyboard"
+TIENE QUE SER:
+GRUB_TERMINAL_INPUT=at_keyboard
+Ahora ya lo coge bien el idioma en la consola del grub!!!
+HE VISTO ESO EN LA DOCUMENTACION OFICIAL: https://www.gnu.org/software/grub/manual/grub/grub.html#Features

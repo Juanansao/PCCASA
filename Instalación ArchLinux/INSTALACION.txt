@@ -1,0 +1,76 @@
+Una vez descargada la imagen oficial y montada en rufus todo por defecto arrancamos uefi desde usb y los comandos son:
+descargamos rufus y la iso en archlinux downloads de cualquier mirror
+al quemar la imagen con rufus ahora nos esta dando error parece ser que por lo de los permisos readonly del usb que aparecian antes 
+cambiamos de usb...
+
+	loadkeys es
+	iwctl
+		station wlan0 get-networks
+		exit
+	iwctl --passphrase passphrase station wlan0 connect SSID
+SE HACE SYSTEMCTL REFLECTOR AQUI
+UNA VEZ MONTADO YA ACTUALIZAMOS LOS MIRRORS...
+	systemctl enable refelctor,service
+	systemctl start reflector.service
+
+	timedatectl set-ntp true AVECES CUELGA PARECE ACTIVAR REFLECTOR AUTOMATICO Y CUELGA
+	cfdisk(PARTICIONAMOS DISCO)
+	
+FORMATEAMOS:
+UEFI: mkfs.vfat -F32 /dev/sda1
+LINUX: mkfs.ext4 /dev/sdX1
+
+
+
+MONTAMOS:
+	mount /dev/sdX1 /mnt
+
+DESPUES DE MONTAR EL RAIZ TENEMOS QUE CREAR DIRECTORIOS... SI LOS CREAMOS ANTES DE MONTAR LA RAIZ SOBRE MNT DESAPARECEN Y NO PODEMOS SEGUIR MONTANDO...
+CREAMOS directorios de mnmontaje:
+	mkdir /mnt/home
+	mkdir -p /mnt/boot/efi
+	mount resto
+HE PROBADO A CREAR BOOT2 COMO RUTA ALTERNATIVA Y AL INSTALAR GRUB LO PONE EN BOOT AUTOMATICAMENTE Y ME GUARDA SOLO LA IMAGEN EFI EN BOOT2 O SEA QUE DESPERDICIO PARTICION ASI PARECE
+
+VEREMOS COMO /etc/pacman.d/mirrorlist cambia
+en Etc/xdg/reflector/reflector.conf PODEMOS ELEGIR PAISES NUMERO ETC
+
+	pacstrap /mnt base linux linux-firmware 
+
+
+POSIIBLY MISSING FIRMWARE:
+	bfa
+	wd719x
+	qed
+	qla2xxx
+	aic94xx
+	qla1280
+	xhci_pci
+
+SI INTENTAMOS INSTALAR GRUB AQUI DESDE /MNT/BOOT/EFI NO NOS DEJA POR LO QUE EL RESTO DE CAMBIOS E INSTALACIONES SE HACEN SOBRE LA BASE INSTALADA CON PACSTRAP
+
+	genfstab -U /mnt >> /mnt/etc/fstab
+	arch-chroot /mnt
+TIMEDATECTL NO FUNCIONA
+	ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
+	hwclock --systohc
+	
+	
+
+
+	pacman -S grub efibootmgr networkmanager NEOVIM
+HOSTNAME ETC
+KEYMAP=es
+	VCONSOLE.CONF
+hosts
+127.0.0.1	localhost
+::1		localhost
+127.0.1.1	elnombredemiequipo.localdomain	elnombredemiequipo
+
+	grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+	grub-mkconfig -o /boot/grub/grub.cfg
+	passwd*
+salimos de chroot con exit
+umount -R /mnt
+reboot
+	

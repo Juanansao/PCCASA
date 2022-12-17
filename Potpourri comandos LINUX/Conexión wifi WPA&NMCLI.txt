@@ -1,0 +1,33 @@
+CREAMOS UN ARCHIVO WPA_PASSPHRASE
+wpa_passphrase oNo-WiFi ********* > /etc/wpa_supplicant/wificfg
+CONECTAMOS USANDO ARCHIVO CREADO
+wpa_supplicant -B -i wlp3s0 -D nl80211 -c /etc/wpa_supplicant/wificfg
+
+ESTO ANTERIOR FUE SIN PROBLEMA EN LA PRIMERA CONEXION, AL CAMBIAR EL ROUTER NO FUNCIONA
+PROBANDO ip link wlp3s0 set up no cambia nada
+HE QUITADO -B DE LA ORDEN (wpa_supplicant -i wlp3s0 -D nl80211 -c /etc/wpa_supplicant/wificfg) Y SE QUEDA COLGADO AHORA, NO FUNCIONA
+PROBAMOS systemctl restart NetworkManager.service PERO TAMPOCO FUNCIONA
+PROBAMOS ESTO PERO DHCPCD NO FUNCIONA
+# systemctl enable wpa_supplicant@nombre de la interfaz de red
+# systemctl enable dhcpcd@nombre de la interfaz de red
+
+CON #nmcli connection show O CON #nmcli con PODEMOS VER LAS CONEXIONES GUARDADAS EN NETWORKMANAGER
+AHORA BORRAMOS LA ANTIGUA RED WIFI QUE YA NO FUNCIONA
+#nmcli con delete uuid 67d66f2c-9a03-4298-8136-35933de5febe
+
+Al final ha funcionado con:
+#nmcli dev wifi connect VoDaFoNeWiFi-5G password ********
+
+EN LA FASE DE INSTALACION LO HICE CON WPASUPPLIXCANT Y NO HUBO PROBLEMA
+He borrado el archivo wifi.cfg de etc/wpa_supplicant
+CREO QUE HE DEJADO WPA_SUPPLICANT SIN CORRER... AHORA SOLO ESTA INICIADO Y ENBLEADO EL NETWORKMANAGERSERVICE
+MAS TARDE VOLVI A PRBAR  AHACERLO CON WPASUPPLICANT PERO OBTENGO EL MISMO ERROR
+
+SE SUPONE QUE CON ESTOS CUATRO COMANDOS BASTARIA... CREO QUE A MI CON EL DE NETOWRKMANAGER YA SOBRABA
+systemctl start NetworkManager.service
+systemctl enable NetworkManager.service
+systemctl start wpa_supplicant.service
+systemctl enable wpa_supplicant.service
+
+NETWORKMANAGER INSTALA AUTOMATICAMENTE WPASUPPLICANT
+
