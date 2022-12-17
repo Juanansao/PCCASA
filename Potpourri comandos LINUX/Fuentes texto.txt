@@ -1,8 +1,0 @@
-CON ESTE COMANDO OBTENEMOS LAS FUENTES EN FONTCONFIG
-#fc-list :file
-FONTCONFIG PARECE SER EL BASE DE LAS FUENTES DE LINUX...
-AHI ESTA TODA LA INFO
-
-https://wiki.archlinux.org/title/Font_configuration_(Espa%C3%B1ol)#Configuraci%C3%B3n_de_FontConfig
-
-https://maslinux.wordpress.com/2017/08/29/como-encontrar-todas-las-fuentes-instaladas-desde-la-linea-de-comandos-en-gnu-linux/

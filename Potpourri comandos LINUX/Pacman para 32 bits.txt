@@ -1,5 +1,0 @@
-EN /etc/pacman.conf DESCOMENTAR:
-[multilib]
-include=/etc/pacman.d/mirrorlist
-
-Una vez descomentado aplicar pacman -Syu
